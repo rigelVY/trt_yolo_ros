@@ -1,0 +1,1 @@
+/home/nvidia/deepstream_reference_apps/yolo/data/533917.jpg
