@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="config_path" default="$(find trt_yolo_ros)/config/yolov3-tiny-save.txt" />
+  <arg name="config_path" default="$(find trt_yolo_ros)/config/yolov3-tiny.txt" />
+  <arg name="image_topic" default="/usb_cam/image_raw" />
 
   <node name="trt_yolo_ros_node" pkg="trt_yolo_ros" type="trt_yolo_ros_node" output="screen" respawn="true" >
     <param name="config_path" value="$(arg config_path)" />
+    <param name="image_topic" value="$(arg image_topic)" />
   </node>
 </launch>
 

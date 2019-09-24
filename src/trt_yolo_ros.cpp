@@ -2,12 +2,13 @@
 
 TrtYoloRos::TrtYoloRos(ros::NodeHandle nh,ros::NodeHandle pnh) : nh_(nh),pnh_(pnh)
 {
-    pnh_.param<std::string>("config_path", config_path_, "/home/nvidia/catkin_ws/src/trt_yolo_ros/config/yolov3-tiny-save.txt");
+    pnh_.param<std::string>("config_path", config_path_, "/home/nvidia/catkin_ws/src/trt_yolo_ros/config/yolov3-tiny.txt");
+    pnh_.param<std::string>("image_topic", image_topic_, "/image_raw");
 
     char *config_arg[2];
     config_arg[0] = "./apps/trt_yolo_ros/build/trt_yolo_ros";
     //config_arg[1] = const_cast<char *>(("--flagfile=" + config_path_).c_str());
-    config_arg[1] = "--flagfile=/home/nvidia/catkin_ws/src/trt_yolo_ros/config/yolov3-tiny-save.txt";
+    config_arg[1] = "--flagfile=/home/nvidia/catkin_ws/src/trt_yolo_ros/config/yolov3-tiny.txt";
 
     yoloConfigParserInit(2, config_arg);
     batchSize = getBatchSize();
@@ -17,7 +18,7 @@ TrtYoloRos::TrtYoloRos(ros::NodeHandle nh,ros::NodeHandle pnh) : nh_(nh),pnh_(pn
 
     inferNet = std::unique_ptr<Yolo>{new YoloV3(batchSize, yoloInfo, yoloInferParams)};
 
-    image_sub_ = nh_.subscribe("/usb_cam/image_raw", 10, &TrtYoloRos::ImageCallback_, this);
+    image_sub_ = nh_.subscribe(image_topic_, 10, &TrtYoloRos::ImageCallback_, this);
     boost::thread publish_thread(boost::bind(&TrtYoloRos::PublishDetectImage_, this));
 }
 

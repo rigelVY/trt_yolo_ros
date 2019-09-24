@@ -29,6 +29,7 @@ private:
     ros::NodeHandle pnh_;
 
     std::string config_path_;
+    std::string image_topic_;
 
     //ros::Publisher detect_pub_;
     ros::Subscriber image_sub_;
