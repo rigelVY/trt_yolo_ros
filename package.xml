@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>trt_yolo_ros</name>
+  <version>0.0.0</version>
+  <description>Tensor RT Tiny-Yolov3 package</description>
+
+  <maintainer email="rigel@todo.todo">rigel</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <exec_depend>roscpp</exec_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <build_depend>opencv2</build_depend>
+  <exec_depend>opencv2</exec_depend>
+</package>
