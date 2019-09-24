@@ -69,8 +69,7 @@ void TrtYoloRos::PublishDetectImage_(void)
     ros::Rate loop_rate(10);
     while(ros::ok())
     {
-        
-        //detect_pub_.publish(cmd_vel);
+        // TODO: publish inference result as vision_msgs topic.
 
         loop_rate.sleep();
     }
